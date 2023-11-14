@@ -6,11 +6,10 @@ phases:
   pre_build:
     commands:
       - echo logging in to AWS ECR...
-      - $(aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 962804699607.dkr.ecr.us-west-2.amazonaws.com)
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 962804699607.dkr.ecr.us-west-2.amazonaws.com
   build:
     commands:
       - echo build Docker image on `date`
-      - cd src
       - docker build -t team1b-react-image .
       - docker tag team1b-react-image:latest 962804699607.dkr.ecr.us-west-2.amazonaws.com/team1b-react-image:latest
   post_build:
