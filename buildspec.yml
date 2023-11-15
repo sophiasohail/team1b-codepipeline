@@ -17,5 +17,9 @@ phases:
       - echo build Docker image complete `date`
       - echo push latest Docker images to ECR...
       - docker push 962804699607.dkr.ecr.us-west-2.amazonaws.com/team1b-react-image:latest
+      - echo Writing image definitions file...
+      - printf '[{"name":"team1b-container","imageUri":"<IMAGEURI>"}]' > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json
 
 
