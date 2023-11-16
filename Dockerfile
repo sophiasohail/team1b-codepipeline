@@ -8,18 +8,15 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # install app dependencies
-COPY package.json /app
-COPY package-lock.json /app
-COPY src /app
-COPY public /app
-COPY todo-data.json /app
-RUN npm install
-#RUN npm install react-scripts@3.4.1 -g --silent
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
 
 # add app
-COPY . /app
+COPY . ./
 
-# Make port 3000 available to the world outside this container
+# Make port 3000 available to the world outside this container is a sample
 EXPOSE 3000
 
 # start app
